@@ -8,3 +8,5 @@ const urlController = new UrlController()
 const urlRouter = Router();
 
 urlRouter.post('/url', urlController.generateNewUrl)
+
+export default urlRouter

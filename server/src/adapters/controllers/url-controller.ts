@@ -1,4 +1,4 @@
-
+import { Request,Response } from "express"
 
 export class UrlController {
     async generateNewUrl(req: Request, res: Response){
