@@ -20,6 +20,8 @@ const Card = () => {
   }, [link]);
 
   const sendUserInput = (data: {userId: string | undefined, url: string}) => {
+    console.log('send');
+    
     axios.post('/url', data, {
       headers: {
         "Content-Type": 'application/json'
@@ -44,11 +46,8 @@ const Card = () => {
       userId: user?.id,
       url: link
     };
-    console.log("Data to send:", data);
-    
-    if (isValid) {
       sendUserInput(data);
-    }
+    
   };
 
   return (
