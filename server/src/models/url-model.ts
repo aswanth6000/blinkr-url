@@ -18,4 +18,4 @@ const urlSchema = new Schema<IUrlSchema>({
     visitHistory: [{timestamp: {type: Number}}]
 }, {timestamps: true});
 
-export default mongoose.model<IUrlSchema>("url", urlSchema);
+export default mongoose.model<IUrlSchema>("urlModel", urlSchema);

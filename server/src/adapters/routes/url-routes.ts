@@ -7,6 +7,9 @@ const urlController = new UrlController()
 
 const urlRouter = Router();
 
-urlRouter.post('/url', urlController.generateNewUrl)
+urlRouter.post('/url', urlController.generateNewUrl);
+urlRouter.get('/:shortId',urlController.reUrl);
+urlRouter.get('/analytics/:shortId',urlController.handleGetAnalytics);
+
 
 export default urlRouter

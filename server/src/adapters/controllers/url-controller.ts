@@ -4,14 +4,17 @@ import urlModel from "../../models/url-model";
 export class UrlController {
     async generateNewUrl(req: Request, res: Response){
         try {
-            const shortId = (shortid.generate());
+            const shortId = shortid.generate();
             const {url, userId} = req.body
-            await urlModel.create({
+            console.log(shortId);
+            
+            const savedUrl = await urlModel.create({
                 userId: userId,
                 shortId: shortId,
-                redirectURL: url,
+                redirectUrl: url,
                 visitHistory: [],
               });
+              console.log('created', savedUrl);
 
             return res.status(200).json({messge: "url fetch success", shortId: shortId})
 
