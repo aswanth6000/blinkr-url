@@ -4,8 +4,13 @@ export class UrlController {
     async generateNewUrl(req: Request, res: Response){
         try {
             const url = req.body
-            return res.status(401).json({messgae:"incorrect password"})
-            
+            console.log(req.body);
+            const urlRegex = /^(ftp|http|https):\/\/[^ "]+$/;
+            if(!urlRegex.test(url.url)){
+                return res.status(400).json({message: 'invalid url'});
+            }
+            return res.status(200).json({messge: "url fetch success", url})
+
         } catch (error) {
             
         }
