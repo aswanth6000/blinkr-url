@@ -4,7 +4,7 @@ import urlModel from "../../models/url-model";
 export class UrlController {
     async generateNewUrl(req: Request, res: Response){
         try {
-          const CONST_URL = 'http://localhost:8000/'
+          const CONST_URL = 'https://blinkr-url.vercel.app/'
             const shortId = shortid.generate();
             const shortURI = CONST_URL + shortId;
             const {url, userId} = req.body
