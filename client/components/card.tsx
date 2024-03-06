@@ -12,6 +12,7 @@ const Card = () => {
   const [isValid, setIsValid] = useState(true);
   const [res, setRes] = useState(false);
   const [data, setData] = useState("");
+  const [load, setLoad] = useState(false);
   const { user } = useUser();
 
   useEffect(() => {
@@ -20,7 +21,7 @@ const Card = () => {
   }, [link]);
 
   const sendUserInput = (data: { userId: string | undefined; url: string }) => {
-    console.log("send");
+    setLoad(true)
 
     axios
       .post("/url", data, {
@@ -29,10 +30,12 @@ const Card = () => {
         },
       })
       .then((response) => {
+        setLoad(false)
         console.log(response, "success response");
         if (response.data && response.status === 200) {
           setRes(true);
           setData(response.data.shortId);
+          toast.success("Success");
           setLink('')
         }
       })
@@ -88,7 +91,7 @@ const Card = () => {
           )}
           {res ?<Button disabled={!res} type="submit">
             Copy
-          </Button> : <Button disabled={!isValid} type="submit">
+          </Button> : <Button disabled={!isValid || load } type="submit">
             Short link
           </Button> }
         </div>
